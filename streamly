@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Streamly</title>
+  <style>
+    body {
+      background-color: #141414;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #141414;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo h1 {
+      margin: 0;
+      font-weight: 900;
+      font-size: 1.8em;
+      color: white;
+      user-select: none;
+    }
+    nav {
+      display: flex;
+      gap: 25px;
+      font-weight: 600;
+      font-size: 1.1em;
+      flex-grow: 1;
+      justify-content: center;
+    }
+    nav button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.1em;
+      padding: 8px 12px;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+    nav button.active,
+    nav button:hover {
+      color: #FFA500;
+    }
+    .discord-link svg {
+      fill: white;
+      width: 28px;
+      height: 28px;
+      transition: fill 0.3s ease;
+      cursor: pointer;
+    }
+    .discord-link:hover svg {
+      fill: #5865F2;
+    }
+    .category {
+      padding: 20px 30px;
+    }
+    .category-title {
+      margin-top: 0;
+      font-weight: 700;
+      font-size: 1.6em;
+      margin-bottom: 15px;
+    }
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .item {
+      cursor: default;
+      width: 140px;
+      text-align: center;
+      user-select: none;
+      position: relative;
+    }
+    .item img {
+      width: 140px;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 6px;
+      transition: transform 0.3s ease;
+    }
+    .item:hover img {
+      transform: scale(1.05);
+    }
+    .item-name {
+      margin-top: 8px;
+      font-weight: 600;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>Streamly</h1>
+    </div>
+    <nav>
+      <button class="active" onclick="showCategory('home', event)">Domov</button>
+      <button onclick="showCategory('filmy', event)">Filmy</button>
+      <button onclick="showCategory('serialy', event)">Seriály</button>
+      <button onclick="showCategory('sport', event)">Šport</button>
+      <button onclick="showCategory('nsfw', event)">NSFW</button>
+    </nav>
+    <div class="discord-link">
+      <a href="https://discord.gg/R4duPk9cc2" target="_blank" title="Náš Discord" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M20.317 4.369a19.791 19.791 0 0 0-4.885-1.515..." />
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div id="home" class="category">
+      <div class="items">
+        <div class="item"><div class="item-name">Premier Sport 3</div></div>
+        <div class="item"><div class="item-name">JOJ</div></div>
+        <div class="item"><div class="item-name">JOJ Plus</div></div>
+        <div class="item"><div class="item-name">Dajto</div></div>
+        <div class="item"><div class="item-name">TA3</div></div>
+        <div class="item"><div class="item-name">CNN Prima News</div></div>
+        <div class="item"><div class="item-name">TV Nové Zámky</div></div>
+        <div class="item"><div class="item-name">JOJ Šport</div></div>
+        <div class="item"><div class="item-name">JOJ Šport 2</div></div>
+        <div class="item"><div class="item-name">Nova Sport 1</div></div>
+        <div class="item"><div class="item-name">Nova Sport 2</div></div>
+        <div class="item"><div class="item-name">Nova Sport 3</div></div>
+        <div class="item"><div class="item-name">Nova Sport 4</div></div>
+        <div class="item"><div class="item-name">Nova Sport 5</div></div>
+        <div class="item"><div class="item-name">Nova Sport 6</div></div>
+        <div class="item"><div class="item-name">Sport 1</div></div>
+        <div class="item"><div class="item-name">Sport 2</div></div>
+        <div class="item"><div class="item-name">ČT Sport</div></div>
+        <div class="item"><div class="item-name">ČT Sport Plus</div></div>
+        <div class="item"><div class="item-name">Spektrum Home</div></div>
+        <div class="item"><div class="item-name">TV Paprika</div></div>
+        <div class="item"><div class="item-name">Strike TV</div></div>
+        <div class="item"><div class="item-name">FightBox</div></div>
+        <div class="item"><div class="item-name">Extreme Sports</div></div>
+        <div class="item"><div class="item-name">Cartoon Network</div></div>
+        <div class="item"><div class="item-name">Ginx TV</div></div>
+        <div class="item"><div class="item-name">Gametoon</div></div>
+        <div class="item"><div class="item-name">Eroxxx</div></div>
+        <div class="item"><div class="item-name">Erox</div></div>
+        <div class="item"><div class="item-name">Leo TV</div></div>
+        <div class="item"><div class="item-name">Leo TV Gold HD</div></div>
+        <div class="item"><div class="item-name">PornHub TV</div></div>
+      </div>
+    </div>
+
+    <div id="filmy" class="category" style="display:none;">
+      <h2 class="category-title">Filmy</h2>
+      <div class="items">
+        <!-- filmy ako máš -->
+        <!-- ... -->
+<!-- existujúce filmy -->
+        <div class="item">
+          <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/169/921/169921814_iicww5.png" alt="Wasabi" />
+          <div class="item-name">Wasabi</div>
+        </div>
+        <div class="item">
+          <img src="https://play-lh.googleusercontent.com/V3W_1uLiraX9RdqmRYI7SCYgI8UgK80Ta_95OmCfGrQYhJxjLwy55ggja_2AEE77h76oCg" alt="The Maze Runner" />
+          <div class="item-name">The Maze Runner</div>
+        </div>
+        <div class="item">
+          <img src="https://play-lh.googleusercontent.com/F7wFD2Gw40eyc2pICHN5pUY3eJ6M1EMGxMIb5rWBX5NzW_Oh_DoWjqeSFdUWOWJRDMk" alt="Maze Runner: The Scorch Trials" />
+          <div class="item-name">Maze Runner: The Scorch Trials</div>
+        </div>
+        <div class="item">
+          <img src="https://play-lh.googleusercontent.com/_O83nyKf24muZ_vFS2e7Wrpr-wUP0884ifMaQk2OyKmZQGxha6gsIcdFn3Il-FYLXJlkYA" alt="Maze Runner: The Death Cure" />
+          <div class="item-name">Maze Runner: The Death Cure</div>
+        </div>
+        <div class="item">
+          <img src="https://s3.amazonaws.com/nightjarprod/content/uploads/sites/261/2025/02/22162818/wTxYZNj3NselE9H9dST2GUn4UYE1-scaled.jpg" alt="Minecraft Movie" />
+          <div class="item-name">Minecraft Movie</div>
+        </div>
+        <div class="item">
+          <img src="https://m.media-amazon.com/images/M/MV5BYmYyZjUzYjgtY2U1My00MTA4LTllNWEtNWU3ZThkOWRmMTY1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Plankton: The Movie" />
+          <div class="item-name">Plankton: The Movie</div>
+        </div>
+        <div class="item">
+          <img src="https://m.media-amazon.com/images/I/81H-+S1WUUL.jpg" alt="The SpongeBob Movie: Sponge on the Run" />
+          <div class="item-name">The SpongeBob Movie: Sponge on the Run</div>
+        </div>
+        <div class="item">
+          <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/169/067/169067597_6ipxa1.jpg" alt="Saving Bikini Bottom: The Sandy Cheeks Movie" />
+          <div class="item-name">Saving Bikini Bottom: The Sandy Cheeks Movie</div>
+        </div>
+        <div class="item">
+          <img src="https://m.media-amazon.com/images/M/MV5BNDhlMDM3ZDUtMGNhZi00ZTFmLTg1YjYtZTM3ZTE1MGIwNWFjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="SpongeBob Movie: Sponge Out of Water" />
+          <div class="item-name">SpongeBob Movie: Sponge Out of Water</div>
+        </div>
+        <div class="item">
+          <img src="https://upload.wikimedia.org/wikipedia/en/3/31/The_SpongeBob_SquarePants_Movie_poster.jpg" alt="The SpongeBob SquarePants Movie" />
+          <div class="item-name">The SpongeBob SquarePants Movie</div>
+        </div>
+
+        <!-- doplnené filmy podľa požiadavky -->
+        <div class="item">
+          <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Warcraft_Teaser_Poster.jpg" alt="Warcraft" />
+          <div class="item-name">Warcraft</div>
+        </div>
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/d65f4d72-05cd-41fc-9ede-e28d533d965e.jpg" alt="Hip Hop žije" />
+          <div class="item-name">Hip Hop žije</div>
+        </div>
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/9d0ce483-88a6-4b24-9fc0-852e6b1b1c28.jpg" alt="Kontrafakt NEW ERA: Cesta do O2 arény" />
+          <div class="item-name">Kontrafakt NEW ERA: Cesta do O2 arény</div>
+        </div>
+
+        <!-- nový film Rytmus: Tempos -->
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/0a553099-daf5-4f25-b2b1-04b2d51d4d59.jpg" alt="Rytmus: Tempos" />
+          <div class="item-name">Rytmus: Tempos</div>
+        </div>
+  <div class="item">
+    <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/cf3ea890-4fde-4013-826e-af9697645267.jpg" alt="RYTMUS sídliskový sen" />
+    <div class="item-name">RYTMUS sídliskový sen</div>
+  </div>
+ <div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/3f58382b-91b8-46ba-9ae1-8ca18d1b17e3.jpg" alt="Karlos" />
+  <div class="item-name">Karlos</div>
+         </div>
+ <div class="item">
+    <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/5937d013-630e-46b0-af44-195dbef56f66.jpg" alt="Jiří Procházka: Cesta bojovníka" />
+    <div class="item-name">Jiří Procházka: Cesta bojovníka</div>
+        </div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/3ee8d553-dfbc-42a9-8ba5-ae357d8a07a2.jpg" alt="Attila" />
+  <div class="item-name">Attila</div>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/d73f91db-4b30-4c18-91e0-98fa96f71689.jpg" alt="Jakub Zitron Ťapák: Ruku na srdce" />
+  <div class="item-name">Jakub Zitron Ťapák: Ruku na srdce</div>
+</div>
+<div class="item">
+  <img src="https://lumiere-a.akamaihd.net/v1/images/p_walle_19753_69f7ff00.jpeg" alt="WALL-E" />
+  <div class="item-name">WALL-E</div>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w140/files/images/film/posters/159/810/159810537_c48b2b.jpg" alt="Little Hercules in 3-D" />
+  <div class="item-name">Little Hercules in 3-D</div>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w140/files/images/film/posters/170/193/170193280_m3ehmo.jpg" alt="Peppa Meets the Baby Cinema Experience" />
+  <div class="item-name">Peppa Meets the Baby Cinema Experience</div>
+</div>
+<div class="item">
+  <img src="https://m.media-amazon.com/images/M/MV5BNmJlZGIzMjEtZWE0NS00NTAxLWIyNGItNjYzYzhjMmI3ZWVmXkEyXkFqcGc@._V1_.jpg" alt="Gladiator II" />
+  <p>Gladiator II</p>
+</div>
+<div class="item">
+  <img src="https://m.media-amazon.com/images/M/MV5BMTgwMDA0Mzg4OF5BMl5BanBnXkFtZTgwNjk1MjQ2NTM@._V1_.jpg" alt="Ralph Breaks the Internet" />
+  <p>Ralph Breaks the Internet</p>
+</div>
+<div class="item">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiM0qrlutj4tJrHJ2UKMJRVuND9ob8xCYMAw&s" alt="Dirty Dancing" />
+  <p>Dirty Dancing</p>
+</div>
+<div class="item">
+  <img src="https://eboxcz-ott-images.ssl.cdn.cra.cz/r225x320n/d88f2678-02f9-5563-97d7-09f38a2c0b39?default=3b3db082-875f-4c48-baf8-5188f7ba96c2" alt="Super Mario Bros. vo filme" />
+  <p>Super Mario Bros. vo filme</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/9b153b95-60d7-4e76-ab21-81fbf9c2724e.jpg" alt="Zakladateľ" />
+  <p>Zakladateľ</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/4f9cbf22-1a5a-4084-98b7-5abc6a6d9476.jpg" alt="Marley a ja" />
+  <p>Marley a ja</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/b9e66955-2546-42fe-bf74-a889789584ab.jpg" alt="Zázračný obuvník" />
+  <p>Zázračný obuvník</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/778ef5b4-8702-4230-a1ed-b06f072754e6.jpg" alt="Vianočný zázrak lásky" />
+  <p>Vianočný zázrak lásky</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/5927f954-af9a-4b40-93b0-2566992401b8.jpg" alt="Pád legendy" />
+  <p>Pád legendy</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/392cbdfc-68b8-4892-accf-800d5e3aa214.jpg" alt="Samo Trnka: Manžel, otec, hovado" />
+  <p>Samo Trnka: Manžel, otec, hovado</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/163/357/163357462_d5152f.jpg" alt="Balkánska hranica" />
+  <p>Balkánska hranica</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/159/317/159317506_d25c01.jpg" alt="Krvavý diamant" />
+  <p>Krvavý diamant</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w663/files/images/film/posters/159/630/159630331_abfce2.jpg" />
+  <p>Kráľovstvo nebeské</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/159/208/159208423_a49223.jpg" />
+  <p>Americký ostreľovač</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/163/614/163614979_ab023d.jpg" />
+  <p>Leví kráľ</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/167/162/167162515_1ccc61.png" />
+  <p>Leví kráľ</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/169/273/169273492_wjg670.jpg" />
+  <p>Lóve 2</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/165/575/165575262_x39t3f.jpg" />
+  <p>Smrtonosná pasca: Opäť v akcii</p>
+</div>
+<div class="item">
+  <img src="https://m.media-amazon.com/images/M/MV5BZDkwMWNiMTgtMDUzNi00MWU1LWIxODUtMWFjODRhM2NjMThiXkEyXkFqcGc@._V1_.jpg" />
+  <p>Invalid</p>
+</div>
+<div class="item">
+  <img src="https://storage.googleapis.com/pod_public/750/266241.jpg" />
+  <p>Forrest Gump</p>
+</div>
+<div class="item">
+  <img src="https://m.media-amazon.com/images/M/MV5BZGM3ZTk1MTctNWRkMi00MTE0LWIyNWMtNjZiYmI4MWEwNDU1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+  <p>My Dad's Christmas Date</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/168/572/168572584_bst07p.jpg" />
+  <p>Vojna policajtov</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/4a55c27b-8932-4d94-b484-136c58c1104d.jpg" />
+  <p>Jobs</p>
+</div>
+<div class="item">
+  <img src="https://m.media-amazon.com/images/M/MV5BNGFiNjY3ZGEtNWM0Yy00NDgxLWFlZDItNjZmNDM0ZTVkNzc3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+  <p>Príbeh Google</p>
+</div>
+<div class="item">
+  <img src="https://image.tmdb.org/t/p/original/60bTx5z9zL1AqCjZ0gmWoRMJ6Bb.jpg" />
+  <p>The Emoji Movie</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/168/690/168690672_xf9l3i.jpg" />
+  <p>Road House</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/160/748/160748248_bfb75d.jpg" />
+  <p>Hop</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/799576f8-a1fb-4205-a392-9093d22f0ea1.jpg" />
+  <p>Rocky</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/db4b4cce-fd8f-48e5-b622-2f32ef3420c1.jpg" />
+  <p>Rocky II</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/467ea7a1-b137-47d7-a0bd-900cdbbce4fc.jpg" />
+  <p>Rocky III</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/47540ff0-fee5-4336-abd4-f7518ce2f7f3.jpg" />
+  <p>Rocky IV</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/995164ca-5ec7-4b57-974f-33798fe89349.jpg" />
+  <p>Rocky V</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/70b1c3a7-5682-45a2-98e0-36165cd7dec2.jpg" />
+  <p>Rocky Balboa</p>
+</div>
+
+
+
+
+      </div>
+    </div>
+
+    <div id="serialy" class="category" style="display:none;">
+      <h2 class="category-title">Seriály</h2>
+      <div class="items">
+        <!-- tu budú seriály -->
+        <div class="item">
+  <img src="https://m.media-amazon.com/images/M/MV5BMzU5ZGYzNmQtMTdhYy00OGRiLTg0NmQtYjVjNzliZTg1ZGE4XkEyXkFqcGc@._V1_.jpg" alt="Breaking Bad" />
+  <p>Breaking Bad</p>
+</div>
+<div class="item">
+  <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/57B9D42C8DB36F8BB0140FE50789E8DF45E601CC042DB05958D196DCCA56C2F9/scale?width=506&aspectRatio=2.00&format=webp" alt="Family Guy" />
+  <p>Family Guy</p>
+</div>
+<div class="item">
+  <img src="https://tr.web.img2.acsta.net/c_310_420/pictures/18/10/31/17/34/2348073.jpg" alt="Rick and Morty" />
+  <p>Rick and Morty</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/165/980/165980476_021594.jpg" alt="Attack on Titan" />
+  <p>Attack on Titan</p>
+</div>
+<div class="item">
+  <img src="https://d31b9s05ygj54s.cloudfront.net/prima-plus/image/title-a7c9eae8-ea31-497b-aa2a-4046989095b3-3x5wlogo-1747912457.jpeg" alt="Karel vs. Karlos" />
+  <p>Karel vs. Karlos</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/166/203/166203109_43f3d8.jpg" alt="ATTILA z vrcholu až na dno a zase späť" />
+  <p>ATTILA z vrcholu až na dno a zase späť</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/165/639/165639141_93b193.jpg" alt="Squid Game" />
+  <p>Squid Game</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/165/846/165846698_8b4a8e.jpg" alt="Arcane" />
+  <p>Arcane</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/ac87010a-36d5-471b-88a7-4bb751b3e20e.jpg" alt="Susedia" />
+  <p>Susedia</p>
+</div>
+<div class="item">
+  <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/114d78d2-6454-4bad-bde5-5a5cef353139.jpg" alt="Horná Dolná" />
+  <p>Horná Dolná</p>
+</div>
+<div class="item">
+  <img src="https://f.woowoowoowoo.net/resize/250x400/3d/e9/3de96624f0ac2ed6d0de2a95bb982b23/3de96624f0ac2ed6d0de2a95bb982b23.jpg" alt="SpongeBob" />
+  <p>SpongeBob</p>
+</div>
+<div class="item">
+  <img src="https://m.media-amazon.com/images/M/MV5BNzUyYTZhNDYtMTEzNS00N2FhLTg3ZWUtNGQ3ODI4NDY1YzNhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Bob the Builder" />
+  <p>Bob the Builder</p>
+</div>
+<div class="item">
+  <img src="https://m.media-amazon.com/images/M/MV5BN2ZkZGVjOGMtZTMzZi00ZjNiLWI0MjUtMWE0ZTQxZTk5MzgxXkEyXkFqcGc@._V1_.jpg" alt="Gummibär" />
+  <p>Gummibär</p>
+</div>
+<div class="item">
+  <img src="https://eboxcz-ott-images.ssl.cdn.cra.cz/r225x320n/f7694101-7838-4069-a3c3-c710cd974d26?default=3b3db082-875f-4c48-baf8-5188f7ba96c2" alt="2 na 1 (SK)" />
+  <p>2 na 1 (SK)</p>
+</div>
+<div class="item">
+  <img src="https://image.pmgstatic.com/cache/resized/w936/files/images/film/posters/163/754/163754177_7b1256.jpg" alt="Česko Slovensko má talent" />
+  <p>Česko Slovensko má talent</p>
+</div>
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/e961af04-da36-4c2a-a569-4f374d235261.jpg" alt="SOWA - Social Awards Slovakia" />
+          <div class="item-name">
+SOWA - Social Awards Slovakia</div>
+        </div>
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/1e22f0a2-ae3c-4cca-aeb6-7d00a6215d07.jpg" alt="Dobre vedieť!" />
+          <div class="item-name">
+Dobre vedieť!</div>
+        </div>
+        <div class="item">
+          <img src="https://s3.amazonaws.com/static.rogerebert.com/redactor_assets/pictures/6238ee53306fcc6de846081f/content_halo-series-poster-2022.jpeg" alt="Halo" />
+          <div class="item-name">
+Halo</div>
+        </div>
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/6a4fb829-e51f-4455-8aa6-c02d0d06bdd6.jpg" alt="Chlapci a chlapi" />
+          <div class="item-name">
+Chlapci a chlapi</div>
+        </div>
+        <div class="item">
+          <img src="https://eboxcz-ott-images.ssl.cdn.cra.cz/r225x320n/79f42a9b-711b-4a1c-b5c7-145269db4ecf?default=3b3db082-875f-4c48-baf8-5188f7ba96c2" alt="Kojot: Hrdina a šelma" />
+          <div class="item-name">
+Kojot: Hrdina a šelma</div>
+        </div>
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/d4e32aea-dc9f-48d3-845b-3f36418f38a0.jpg" alt="Kobra 11" />
+          <div class="item-name">
+Kobra 11</div>
+        </div>
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/b45c05a7-5976-409e-8c83-05cbc4d8fd55.jpg" alt="Kosti" />
+          <div class="item-name">
+Kosti</div>
+        </div>
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/e5226ab1-3d14-4414-8ecd-6cb0db42eb55.jpg" alt="Mojsejovci" />
+          <div class="item-name">
+Mojsejovci</div>
+        </div>
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/a5cea4f9-fa2e-4498-b109-d350300c1860.jpg" alt="Víkend u Vémolů" />
+          <div class="item-name">
+Víkend u Vémolů</div>
+        </div>
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/0ffa7acf-140f-4e1f-890f-84436b083592.jpg" alt="Na nože" />
+          <div class="item-name">
+Na nože</div>
+        </div>
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/4749071c-99ad-4b90-b170-469fbf6fd4a2.jpg" alt="Pohlreichův souboj restaurací" />
+          <div class="item-name">
+Pohlreichův souboj restaurací</div>
+        </div>
+        <div class="item">
+          <img src="https://eboxcz-ott-images.ssl.cdn.cra.cz/r225x320n/313a1eff-2e97-494a-ae3d-c444ca2ab7d7?default=3b3db082-875f-4c48-baf8-5188f7ba96c2" alt="Ano, šéfe!" />
+          <div class="item-name">
+Ano, šéfe!</div>
+        </div>
+        <div class="item">
+          <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/0f023d9c-2552-4332-9a6f-54e5d759b867.jpg" alt="Šťastní vs. Šťastní" />
+          <div class="item-name">
+Šťastní vs. Šťastní</div>
+        </div>
+        <div class="item">
+          <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/166/820/166820098_4c1bc9.jpg" alt="Australští zlatokopové" />
+          <div class="item-name">
+Australští zlatokopové</div>
+        </div>
+        <div class="item">
+          <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/166/244/166244925_f31b57.jpg" alt="Ultimátum" />
+          <div class="item-name">
+Ultimátum</div>
+        </div>
+        <div class="item">
+          <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/165/086/165086253_553e6f.jpg" alt="History of Swear Words" />
+          <div class="item-name">
+History of Swear Words</div>
+        </div>
+        <div class="item">
+          <img src="https://mrtns.eu/gorila/products/_l/101/l101506.jpg?v=17290978592" alt="Profesionáli" />
+          <div class="item-name">
+Profesionáli</div>
+        </div>
+        <div class="item">
+          <img src="https://img.telkac.zoznam.sk/data/images/broadcast/6fdb0a30-dd02-4135-80f3-33990bd605af.jpe" alt="Kutyil s.r.o." />
+          <div class="item-name">
+Kutyil s.r.o.</div>
+        </div>
+        <div class="item">
+          <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/167/066/167066768_534e58.jpg" alt="The Elon Musk Show" />
+          <div class="item-name">
+The Elon Musk Show</div>
+        </div>
+        <div class="item">
+          <img src="data:image/jpeg;base64,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" alt="Noviny TV JOJ" />
+          <div class="item-name">
+Noviny TV JOJ</div>
+        </div>
+        <div class="item">
+          <img src="data:image/jpeg;base64,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" alt="Krimi" />
+          <div class="item-name">
+Krimi</div>
+        </div>
+        <div class="item">
+          <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/166/378/166378592_03ab1c.jpg" alt="Dům snů" />
+          <div class="item-name">
+Dům snů</div>
+        </div>
+        <div class="item">
+          <img src="data:image/jpeg;base64,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" alt="Naši" />
+          <div class="item-name">
+Naši</div>
+        </div>
+        <div class="item">
+          <img src="https://image.pmgstatic.com/cache/resized/w936/files/images/film/posters/168/942/168942880_jluri2.jpg" alt="Mr. Bean: The Animated Series" />
+          <div class="item-name">
+Mr. Bean: The Animated Series</div>
+        </div>
+        <div class="item">
+          <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/168/168/168168244_an6xa9.jpg" alt="Banáni" />
+          <div class="item-name">
+Banáni</div>
+        </div>
+        <div class="item">
+          <img src="https://image.pmgstatic.com/cache/resized/w140/files/images/film/posters/078/833/78833852_8baddb.jpg" alt="Až je koupím, budou mý!" />
+          <div class="item-name">
+Až je koupím, budou mý!</div>
+        </div>
+        <div class="item">
+          <img src="https://d11-a.sdn.cz/d_11/c_img_QQ_2/1psZZ.jpeg?fl=res,1280,720,2,000000,1" alt="Dílna Jimiho Kutila" />
+          <div class="item-name">
+Dílna Jimiho Kutila</div>
+        </div>
+        <div class="item">
+          <img src="https://resizing.flixster.com/le0S_Y1NSTjXJjSVFmYkaHYQQrs=/fit-in/352x330/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p12659284_b_v9_aa.jpg" alt="Domov, o jakém sníme" />
+          <div class="item-name">
+Domov, o jakém sníme</div>
+        </div>
+        <div class="item">
+          <img src="https://m.media-amazon.com/images/M/MV5BYzc2ZWQ0MDctMTY2YS00ODlhLWExNDgtNzlhMmVlODVjMTBlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Přitažlivé kuchyně, působivé koupelny" />
+          <div class="item-name">
+Přitažlivé kuchyně, působivé koupelny</div>
+        </div>
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+
+    <div id="sport" class="category" style="display:none;">
+      <h2 class="category-title">Šport</h2>
+      <div class="items">
+        <!-- športové kanály/obsah -->
+<div class="item">
+      <img src="https://oktagonmma.com/img/opengraph/og-image.jpg" alt="OktagonMMA">
+      <div class="item-name">OktagonMMA</div>
+    </div>
+
+    <div class="item">
+      <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/cce225cf-ae85-48a4-b618-e12bb138635f.jpg" alt="UFC">
+      <div class="item-name">UFC</div>
+    </div>
+
+    <div class="item">
+      <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/f4e56ba1-9aee-4b15-a643-da2adb755228.jpg" alt="KSW">
+      <div class="item-name">KSW</div>
+    </div>
+
+    <div class="item">
+      <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/e8980eff-7a84-44eb-938c-1c2244ae8adf.jpg" alt="RFA">
+      <div class="item-name">RFA</div>
+    </div>
+
+    <div class="item">
+      <img src="https://assets.tivio.studio/videos/Vh9t1cr9ubVV0XxBFaok/cover" alt="Fight Night Challenge">
+      <div class="item-name">Fight Night Challenge</div>
+    </div>
+
+    <div class="item">
+      <img src="https://eboxcz-ott-images.ssl.cdn.cra.cz/r225x320n/55b9ae21-53c5-4c31-9fd7-a68dcd59115f?default=3b3db082-875f-4c48-baf8-5188f7ba96c2" alt="PFL">
+      <div class="item-name">PFL</div>
+    </div>
+
+    <div class="item">
+      <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/10cbd7ee-7b41-4117-9474-7ab519f70fc4.jpg" alt="Bellator MMA">
+      <div class="item-name">Bellator MMA</div>
+    </div>
+
+    <div class="item">
+<img src="" alt="ClashMMA">
+      <div class="item-name">ClashMMA</div>
+    </div>
+
+    <div class="item">
+      <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/2e99291e-5843-40de-86b3-a61976944d73.jpg" alt="YGames Pro Series CS2">
+      <div class="item-name">YGames Pro Series CS2</div>
+    </div>
+
+    <div class="item">
+      <img src="https://cmesk-ott-images-svod.ssl.cdn.cra.cz/r200x290n/2e839541-6e92-4a25-a665-a2eda34e50cd.jpg" alt="Formula 1">
+      <div class="item-name">Formula 1</div>
+</div>
+
+<div class="item">
+  <img src="https://eboxcz-ott-images.ssl.cdn.cra.cz/r225x320n/f529d00a-b1be-4a24-97fc-5a74905ce67e?default=3a91ae21-421f-4e68-87e3-a166633b8208" alt="Majstrovstvá sveta v hokeji 2025" />
+  <p>Majstrovstvá sveta v hokeji 2025</p>
+</div>
+<div class="item">
+  <img src="https://eboxcz-ott-images.ssl.cdn.cra.cz/r225x320n/77f62c47-07be-4c11-a2a2-8784491f9b0d?default=3b3db082-875f-4c48-baf8-5188f7ba96c2" />
+  <p>ONE</p>
+</div>
+<div class="item">
+  <img src="https://eboxcz-ott-images.ssl.cdn.cra.cz/r225x320n/?default=3b3db082-875f-4c48-baf8-5188f7ba96c2" />
+  <p>The Ring</p>
+</div>
+<div class="item">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMjAE_Os2V67Fd3DOHOTfra4MplfPrI-lN7A&s" />
+  <p>BLAST.tv Austin Major 2025</p>
+</div>
+<div class="item">
+  <img src="" />
+  <p>KO Warriors</p>
+</div>
+<div class="item">
+  <img src="" />
+  <p>PML</p>
+</div>
+<div class="item">
+  <img src="https://dnm.nflximg.net/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABeXLaoFp0PeIXgVd0HMpeJB9vaVrf_aBzu5O9VJX6-crx4jqMlUN4NCW8ALVrBx3uocKzdmUVwQEOEF86ELC8yQ8haDniutbRXR-nuLebbMIYr_iy3NYZY-WGHauPIXqjGPUVw.jpg?r=830" />
+  <p>Jake Paul vs. Mike Tyson</p>
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+    <div id="nsfw" class="category" style="display:none;">
+      <h2 class="category-title">NSFW</h2>
+      <div class="items">
+        <!-- NSFW kanály/obsah -->
+<div class="item" onclick="window.open('https://www.pornhub.com', '_blank')">
+          <img src="https://cdn-icons-png.flaticon.com/512/1377/1377174.png" alt="Pornhub" />
+          <div class="item-name">Pornhub</div>
+        </div>
+        <div class="item" onclick="window.open('https://www.redtube.com', '_blank')">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/RedTube_logo.png" alt="RedTube" />
+          <div class="item-name">RedTube</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function showCategory(categoryId, event) {
+      // Skryť všetky kategórie
+      const categories = document.querySelectorAll('.category');
+      categories.forEach(cat => cat.style.display = 'none');
+
+      // Zobraziť vybranú kategóriu
+      const selected = document.getElementById(categoryId);
+      if (selected) selected.style.display = 'block';
+
+      // Odstrániť aktívny stav zo všetkých tlačidiel
+      const buttons = document.querySelectorAll('nav button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      // Pridať aktívny stav kliknutému tlačidlu
+      if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>
